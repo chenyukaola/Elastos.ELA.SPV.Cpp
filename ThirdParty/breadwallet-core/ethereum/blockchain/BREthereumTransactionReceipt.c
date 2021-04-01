@@ -96,10 +96,10 @@ transactionReceiptLogsRlpEncode (BREthereumTransactionReceipt log,
                                  BRRlpCoder coder) {
     size_t itemsCount = array_count(log->logs);
     BRRlpItem items[itemsCount];
-    
+
     for (int i = 0; i < itemsCount; i++)
         items[i] = logRlpEncode(log->logs[i], RLP_TYPE_NETWORK, coder);
-    
+
     return rlpEncodeListItems(coder, items, itemsCount);
 }
 
@@ -128,16 +128,16 @@ transactionReceiptRlpDecode (BRRlpItem item,
                              BRRlpCoder coder) {
     BREthereumTransactionReceipt receipt = calloc (1, sizeof(struct BREthereumTransactionReceiptRecord));
     memset (receipt, 0, sizeof(struct BREthereumTransactionReceiptRecord));
-    
+
     size_t itemsCount = 0;
     const BRRlpItem *items = rlpDecodeList(coder, item, &itemsCount);
-    assert (4 == itemsCount);
-    
+    //assert (4 == itemsCount);
+
     receipt->stateRoot = rlpDecodeBytes(coder, items[0]);
     receipt->gasUsed = rlpDecodeUInt64(coder, items[1], 0);
     receipt->bloomFilter = bloomFilterRlpDecode(items[2], coder);
     receipt->logs = transactionReceiptLogsRlpDecode(items[3], coder);
-    
+
     return receipt;
 }
 
@@ -148,12 +148,12 @@ extern BRRlpItem
 transactionReceiptRlpEncode(BREthereumTransactionReceipt receipt,
                             BRRlpCoder coder) {
     BRRlpItem items[4];
-    
+
     items[0] = rlpEncodeBytes(coder, receipt->stateRoot.bytes, receipt->stateRoot.bytesCount);
     items[1] = rlpEncodeUInt64(coder, receipt->gasUsed, 0);
     items[2] = bloomFilterRlpEncode(receipt->bloomFilter, coder);
     items[3] = transactionReceiptLogsRlpEncode(receipt, coder);
-    
+
     return rlpEncodeListItems(coder, items, 4);
 }
 

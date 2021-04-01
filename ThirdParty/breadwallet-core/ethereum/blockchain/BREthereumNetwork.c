@@ -232,7 +232,7 @@ static struct BREthereumNetworkRecord ethereumRinkebyRecord = {
     { NULL },
 
     // Enodes
-    
+
     { "enode://fe44bc423f210805daad60cc5d308f449e9282c28a9aba91040d7c727cf5751d1ae9e85d32a430f4a6fe15c8eb52833a1747e8b28e6ed5ae291fdae32e6b9181@18.217.15.245:20630",
 	  "enode://777e2a86687d675c05344acc6e24cefbd3e233759e8b89d7b3d101aeffc89e6292f66a115c5bfc30f250c120e6a2354a7a6ea304439cfded706de1c9ade61abf@18.217.15.245:20630",
 	  "enode://deb84117dada6c2c8f9c5d9d44f749b6fbbefdc987a1611b683ead6e4e2ce8e0d05a196591a713376eee5d9c165d3888d2e175e8eb842e5a381f273c0268edca@18.217.15.245:20630",
@@ -373,7 +373,7 @@ static struct BREthereumNetworkRecord ethereumDIDPrvnetRecord = {
         // Enodes
 
         // BRD
-        {   "enode://9fde20fe0a07c6f384c4e13aa0b2cc89bf01a3375515fb8674b716ff9c381398617c59985f6b4e156665a366f33121b5e5bacc2b0dae59bafd1e97040ac3f67d@114.250.83.88:2111",
+        {   "enode://9fde20fe0a07c6f384c4e13aa0b2cc89bf01a3375515fb8674b716ff9c381398617c59985f6b4e156665a366f33121b5e5bacc2b0dae59bafd1e97040ac3f67d@114.250.87.15:2111",
             NULL },
         { NULL },
         { NULL },
@@ -467,7 +467,7 @@ networkInitilizeAllIfAppropriate (void) {
 
         ethereumRinkebyRecord.genesisBlockHeaderHash =
         hashCreate("0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177");
-        
+
         ethereumRinkebyRecord.trustedCheckpointBlockHeaderHash =
         hashCreate("0x6341fd3daf94b748c72ced5a5b26028f2474f5f00d824504e4fa37a75767e177");
 
